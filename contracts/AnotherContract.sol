@@ -5,7 +5,12 @@ contract AnotherContract {
     address public owner;
     string public name;
     uint public age;
-    uint internal balance;
+    uint public balance;
+
+    /**
+    * @dev Events based on user contract calls
+    */
+    event eventEmitted(address userAddress,uint256 val);
 
     /**
      * @dev The caller account is not authorized to perform an operation.
@@ -22,7 +27,7 @@ contract AnotherContract {
         owner = msg.sender;
     }
 
-    function checkBalance() public view returns (uint) {
+    function checkBalance() public view returns (uint) {      
         return balance;
     }
 
@@ -31,9 +36,20 @@ contract AnotherContract {
     }
 
     /**
+     * @dev Event Emitter Function
+     *      
+     *      Event Emitter Function cannot have any return
+     */
+    function eventEmitter() public {
+        emit eventEmitted(msg.sender,21203010);
+    }
+
+    /**
      * @dev Send funds to contract. Only Owners are allowed
      */
-    function pay() public onlyOwner payable returns (uint) {
+    function pay(uint _age,string memory _name) public onlyOwner payable returns (uint) {
+        name = _name;
+        age = _age;
         balance += msg.value;
         return balance;
     }

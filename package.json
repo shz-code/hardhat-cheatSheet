@@ -1,13 +1,14 @@
 {
   "name": "hardhat-cheatsheet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Hardhat Commands",
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",
     "deploy": "npx hardhat run .\\scripts\\deploy.js",
-    "node": "npx hardhat node"
+    "node": "npx hardhat node",
+    "interact": "npx hardhat run .\\scripts\\contractInteract.js"
   },
   "keywords": [
     "hardhat",
